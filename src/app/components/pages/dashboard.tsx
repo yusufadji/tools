@@ -24,12 +24,12 @@ const DashboardCards: CustomFlowbiteTheme['card'] = {
 
 const displayContents = () => {
     return (DASHBOARD_CONTENTS.map((content, index) => (
-        <Card key={index} href={content.path} theme={DashboardCards}>
-            <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                {content.title}
+        <Card key={index} href={content?.path} theme={DashboardCards}>
+            <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white transition">
+                {content?.title}
             </h5>
             <p className="font-normal text-gray-700 dark:text-gray-400">
-                {content.subtitle}
+                {content?.subtitle}
             </p>
         </Card>
     )))
@@ -38,7 +38,8 @@ const displayContents = () => {
 const Dashboard = () => {
     return (
         <Container>
-            <h2>Testing</h2>
+            <h1>My Tools</h1>
+            <p>Some useful tools that can increase your productivity.</p>
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full mx-auto my-6'>
                 {displayContents()}
             </div>

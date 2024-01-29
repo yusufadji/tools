@@ -7,7 +7,7 @@ import { NAVBAR_DATA, NAVBAR_TITLE } from '../../constants/constants'
 
 const customNavbar: CustomFlowbiteTheme['navbar'] = {
     root: {
-        base: "fixed t-0 l-0 w-full z-10 bg-[rgba(255,255,255,0.7)] backdrop-blur-sm px-2 py-2.5 dark:border-gray-700 dark:bg-[rgba(31,41,55,0.7)] sm:px-4",
+        base: "fixed t-0 l-0 w-full z-20 bg-[rgba(255,255,255,0.7)] backdrop-blur-sm px-2 py-2.5 dark:border-gray-700 dark:bg-[rgba(31,41,55,0.7)] sm:px-4",
         inner: {
             base: "mx-auto flex flex-wrap items-center justify-between"
         }
@@ -32,22 +32,25 @@ const customNavbar: CustomFlowbiteTheme['navbar'] = {
 const CustomNavbar = () => {
     const [isActive, setActive] = useState(0)
     return (
-        <Navbar fluid theme={customNavbar}>
-            <Navbar.Brand className='md:block hidden text-gray-800 dark:text-gray-50' as={Link} href="/">
-                <h1 className="self-center whitespace-nowrap text-xl text-primary font-bold">{NAVBAR_TITLE}</h1>
-            </Navbar.Brand>
-            <div className='w-full md:w-auto flex md:flex-row flex-col justify-end items-center'>
-                <Navbar.Collapse>
-                    {NAVBAR_DATA.map((nav, index) => (
-                        <Navbar.Link active={isActive == index ? true : false} onClick={(e) => setActive(index)} className='capitalize' key={index} as={Link} href={nav.path}>{nav.title}</Navbar.Link>
-                    ))}
-                </Navbar.Collapse>
-                <div className="flex md:flex-col flex-row items-center justify-between w-full md:w-auto mx-0 md:mx-4">
-                    <Navbar.Toggle />
-                    <DarkThemeToggle />
+        <div className="relative">
+            <Navbar fluid theme={customNavbar}>
+                <Navbar.Brand className='md:block hidden text-gray-800 dark:text-gray-50' as={Link} href="/">
+                    <h1 className="self-center whitespace-nowrap text-xl text-primary font-bold">{NAVBAR_TITLE}</h1>
+                </Navbar.Brand>
+                <div className='w-full md:w-auto flex md:flex-row flex-col justify-end items-center'>
+                    <Navbar.Collapse>
+                        {NAVBAR_DATA.map((nav, index) => (
+                            <Navbar.Link active={isActive == index ? true : false} onClick={(e) => setActive(index)} className='capitalize' key={index} as={Link} href={nav.path}>{nav.title}</Navbar.Link>
+                        ))}
+                    </Navbar.Collapse>
+                    <div className="flex md:flex-col flex-row items-center justify-between w-full md:w-auto mx-0 md:mx-4">
+                        <Navbar.Toggle />
+                        <DarkThemeToggle />
+                    </div>
                 </div>
-            </div>
-        </Navbar>
+            </Navbar>
+            <div className="relative bg-gradient-to-r from-violet-600 to-indigo-600 h-[256px] w-full"></div>
+        </div>
     )
 }
 
